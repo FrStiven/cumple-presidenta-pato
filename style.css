@@ -1,0 +1,1391 @@
+/* ==========================================================================
+   CSS STYLESHEET: CARTA DE CUMPLEAÑOS PRESIDENTA PATRICIA
+   Color Palette: Rosa Pastel & Blush, Blanco Perla & Dorado Real (Pink, White & Gold)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-base: #fff7fa;
+  --bg-surface: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  
+  --pink-primary: #ec407a;
+  --pink-medium: #f06292;
+  --pink-light: #f8bbd0;
+  --pink-soft: #fce4ec;
+  --pink-blush: #fff0f5;
+
+  --gold-primary: #d4af37;
+  --gold-light: #fae19c;
+  --gold-dark: #b88628;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+
+  --text-primary: #2d121c;
+  --text-secondary: #5c2d3e;
+  --text-muted: #8e5b6e;
+  
+  --border-gold-subtle: rgba(212, 175, 55, 0.35);
+  --border-gold-bright: rgba(212, 175, 55, 0.75);
+  --border-pink-soft: rgba(244, 143, 177, 0.3);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --font-crest: 'Cinzel', serif;
+
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base & Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(248, 187, 208, 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 90% 25%, rgba(250, 225, 156, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 50% 75%, rgba(252, 228, 236, 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, #fff9fb 0%, #fff0f5 50%, #fdf5f8 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background Canvas for Sparkles */
+#ambientSparklesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Confetti Quick Action */
+.floating-confetti-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f06292, #ec407a);
+  border: 2px solid var(--gold-light);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4), 0 0 15px rgba(250, 225, 156, 0.5);
+  transition: var(--transition-bounce);
+}
+
+.floating-confetti-btn:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 8px 25px rgba(236, 64, 122, 0.6), 0 0 20px var(--gold-glow);
+}
+
+/* ==========================================================================
+   STAGE 1: THE PRESIDENTIAL ENVELOPE (INTRO SCREEN)
+   ========================================================================== */
+.envelope-hero-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: radial-gradient(circle at center, #ffffff 0%, #fff0f5 60%, #fae6ed 100%);
+  padding: 20px;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
+}
+
+.envelope-hero-overlay.hide-envelope {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.envelope-wrapper {
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.badge-official {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-dark);
+  border: 1px solid var(--border-gold-bright);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.envelope-callout {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.envelope-subtext {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  margin-bottom: 25px;
+}
+
+/* 3D Envelope Construction (Pearl Pink & Gold) */
+.envelope-container {
+  width: 330px;
+  height: 220px;
+  margin: 0 auto;
+  position: relative;
+  background: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 20px 45px rgba(236, 64, 122, 0.15), 0 0 25px rgba(212, 175, 55, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.envelope-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 55px rgba(236, 64, 122, 0.25), 0 0 35px var(--gold-glow);
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #ffffff, #fff3f7);
+  border-radius: 10px;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+}
+
+/* Letter preview slightly peeking inside */
+.envelope-paper-preview {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  height: 180px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.paper-glimpse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.glimpse-crown {
+  font-size: 1.8rem;
+}
+
+.glimpse-text {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--pink-primary);
+}
+
+/* Envelope Front Pockets (Triangles) */
+.envelope-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 110px 165px 110px 165px;
+  border-color: transparent #ffe8f0 #ffd6e5 #ffe8f0;
+  border-radius: 0 0 10px 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Envelope Top Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 120px 165px 0 165px;
+  border-color: #ffd1dc transparent transparent transparent;
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 4;
+}
+
+.envelope-container.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+.envelope-container.open .envelope-paper-preview {
+  transform: translateY(-85px);
+}
+
+/* Golden Royal Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd777, #d4af37 60%, #996e14 100%);
+  box-shadow: 0 6px 18px rgba(184, 134, 40, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: brightness(1.12);
+}
+
+.seal-inner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #573b06;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.seal-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.seal-monogram {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.seal-caption {
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.seal-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  animation: sealPulse 2s infinite ease-in-out;
+}
+
+@keyframes sealPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.12); opacity: 0.2; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.wax-seal.breaking {
+  animation: sealCrack 0.6s forwards ease;
+}
+
+@keyframes sealCrack {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.25) rotate(15deg); filter: brightness(1.5); }
+  100% { transform: translate(-50%, -50%) scale(0) rotate(45deg); opacity: 0; }
+}
+
+.envelope-footer-hint {
+  margin-top: 25px;
+  color: var(--gold-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ==============================================
+   STAGE 2: MAIN CELEBRATION
+   ============================================== */
+.main-celebration-content {
+  position: relative;
+  z-index: 10;
+  animation: fadeInMain 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInMain {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.presidential-header {
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+}
+
+.royal-crest-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.crest-crown {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 0 12px var(--gold-glow));
+  animation: crownBob 3s ease-in-out infinite;
+}
+
+@keyframes crownBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+.crest-sparkle-left {
+  position: absolute;
+  left: -22px;
+  top: 0;
+  font-size: 1.3rem;
+  animation: sparkleTwinkle 2s infinite alternate;
+}
+
+.crest-sparkle-right {
+  position: absolute;
+  right: -22px;
+  top: -5px;
+  font-size: 1.3rem;
+  animation: sparkleTwinkle 2.2s infinite 0.5s alternate;
+}
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.7); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+.official-pill {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold-bright);
+  padding: 6px 20px;
+  border-radius: 50px;
+}
+
+.celebration-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ec407a 0%, #d4af37 60%, #b88628 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.celebration-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.beauty-tag {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 2px 10px rgba(236, 64, 122, 0.08);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+}
+
+.beauty-tag:hover {
+  background: var(--pink-soft);
+  border-color: var(--pink-primary);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SECTION 1: THE ROYAL HERO PORTRAIT (FEATURED IMAGE)
+   ========================================================================== */
+.hero-portrait-section {
+  position: relative;
+}
+
+.royal-portrait-frame-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 480px;
+  width: 100%;
+}
+
+/* Floating Crown Above Hero Photo */
+.floating-tiara {
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiara-emoji {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.7));
+  animation: tiaraGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes tiaraGlow {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-6px) scale(1.08); }
+}
+
+.tiara-halo {
+  position: absolute;
+  width: 70px;
+  height: 25px;
+  background: radial-gradient(ellipse, rgba(250, 225, 156, 0.7) 0%, transparent 70%);
+  bottom: 0;
+}
+
+/* Grand Pearl White & Gold Frame */
+.royal-frame {
+  position: relative;
+  border-radius: 24px;
+  padding: 14px;
+  background: linear-gradient(135deg, #ffffff 0%, #fae19c 30%, #d4af37 60%, #ffd1dc 100%);
+  box-shadow: 
+    0 20px 50px rgba(236, 64, 122, 0.2),
+    0 0 30px var(--gold-glow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.royal-frame:hover {
+  box-shadow: 
+    0 25px 65px rgba(236, 64, 122, 0.3),
+    0 0 40px var(--gold-glow);
+}
+
+.frame-glass-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 6;
+  animation: shineAcross 6s infinite;
+}
+
+@keyframes shineAcross {
+  0%, 70% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.corner-ornament {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-color: #d4af37;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 7;
+}
+
+.corner-ornament.top-left {
+  top: 22px;
+  left: 22px;
+  border-width: 3px 0 0 3px;
+  border-top-left-radius: 8px;
+}
+
+.corner-ornament.top-right {
+  top: 22px;
+  right: 22px;
+  border-width: 3px 3px 0 0;
+  border-top-right-radius: 8px;
+}
+
+.corner-ornament.bottom-left {
+  bottom: 22px;
+  left: 22px;
+  border-width: 0 0 3px 3px;
+  border-bottom-left-radius: 8px;
+}
+
+.corner-ornament.bottom-right {
+  bottom: 22px;
+  right: 22px;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 8px;
+}
+
+.portrait-watermark {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-gold-bright);
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--gold-dark);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Portrait Buttons & Caption */
+.btn-luxury-sparkle {
+  background: linear-gradient(135deg, #ec407a 0%, #d4af37 100%);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 12px 26px;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(236, 64, 122, 0.35);
+  transition: var(--transition-bounce);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-luxury-sparkle:hover {
+  transform: scale(1.05);
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+}
+
+.counter-badge {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-left: 4px;
+}
+
+.portrait-caption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-top: 14px;
+}
+
+/* Hero Portrait Photo Switcher */
+.hero-photo-selector-wrapper {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  border-radius: 50px;
+  border: 1px solid var(--border-gold-subtle);
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.08);
+}
+
+.hero-selector-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.hero-photo-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-hero-thumb {
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: 30px;
+  padding: 4px 12px 4px 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: var(--transition-bounce);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.btn-hero-thumb:hover {
+  border-color: var(--pink-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(236, 64, 122, 0.25);
+  color: var(--pink-primary);
+}
+
+.btn-hero-thumb.active {
+  background: linear-gradient(135deg, #ec407a 0%, #d4af37 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.4);
+  transform: scale(1.05);
+}
+
+.hero-thumb-mini {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #ffffff;
+}
+
+/* Bio Card */
+.glass-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(236, 64, 122, 0.08), 0 0 25px rgba(212, 175, 55, 0.1);
+}
+
+.executive-badge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.card-lead-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.presidential-perks-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 18px;
+  font-size: 0.98rem;
+}
+
+.perk-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 12px;
+  background: var(--pink-blush);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+
+.perk-content strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+}
+
+.perk-content span {
+  color: var(--text-secondary);
+}
+
+.tiktok-link {
+  color: var(--pink-primary);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.tiktok-link:hover {
+  color: var(--gold-dark);
+  text-decoration: underline;
+}
+
+.vice-stamp-box {
+  background: #fff8fa;
+  border: 1.5px dashed var(--gold-primary);
+}
+
+.stamp-icon-circle {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* ==========================================================================
+   SECTION 2: PRESIDENTIAL LETTER (WHITE PARCHMENT & GOLD EMBOSS)
+   ========================================================================== */
+.presidential-letter-section {
+  position: relative;
+}
+
+.parchment-letter-card {
+  background: #ffffff;
+  color: var(--text-primary);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 50px rgba(236, 64, 122, 0.1),
+    0 0 30px rgba(212, 175, 55, 0.2);
+  border: 8px double rgba(212, 175, 55, 0.5);
+  position: relative;
+}
+
+.border-bottom-gold {
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.letter-seal-symbol {
+  font-size: 2.4rem;
+  margin-bottom: 4px;
+}
+
+.letter-title {
+  font-family: var(--font-crest);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  letter-spacing: 2.5px;
+  font-weight: 900;
+  color: var(--gold-dark);
+  margin-bottom: 2px;
+}
+
+.letter-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pink-primary);
+  font-weight: 700;
+}
+
+.letter-date {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.letter-body {
+  font-size: 1.12rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+
+.letter-salutation {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--pink-primary);
+  margin-bottom: 1.2rem;
+}
+
+.lead-letter-p {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.letter-quote-callout {
+  background: linear-gradient(135deg, rgba(254, 228, 236, 0.7) 0%, rgba(250, 225, 156, 0.45) 100%);
+  border: 1.5px dashed var(--gold-primary);
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.08);
+  position: relative;
+}
+
+.signature-handwritten {
+  font-family: var(--font-cursive);
+  font-size: 2.8rem;
+  color: var(--gold-dark);
+  display: inline-block;
+  transform: rotate(-3deg);
+  margin-top: 5px;
+}
+
+.mini-seal {
+  display: inline-flex;
+  align-items: center;
+  background: #fff8ea;
+  border: 1px solid var(--gold-primary);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: var(--gold-dark);
+}
+
+/* ==========================================================================
+   SECTION 3: THE MEMORY & PHOTO GALLERY (POLAROID CARDS)
+   ========================================================================== */
+.border-bottom-soft {
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.25);
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.section-subtext {
+  color: var(--text-secondary);
+  max-width: 620px;
+  font-size: 1.02rem;
+}
+
+.btn-gold-outline {
+  border: 1.5px solid var(--gold-primary);
+  color: var(--gold-dark);
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 30px;
+  background: #ffffff;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.btn-gold-outline:hover {
+  background: var(--gold-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.polaroid-card {
+  background: #ffffff;
+  padding: 14px 14px 18px 14px;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08), 0 0 15px rgba(244, 143, 177, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  color: #222;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-8px) rotate(1deg) scale(1.02);
+  box-shadow: 0 18px 40px rgba(236, 64, 122, 0.2), 0 0 25px var(--gold-glow);
+  border-color: var(--gold-primary);
+}
+
+/* VIP Highlight Polaroids (Para que las mejores fotos resalten más) */
+.polaroid-card.vip-highlight {
+  border: 2px solid var(--gold-primary);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7fb 100%);
+  box-shadow: 0 16px 42px rgba(236, 64, 122, 0.22), 0 0 25px rgba(212, 175, 55, 0.45);
+  position: relative;
+}
+
+.polaroid-card.vip-highlight:hover {
+  transform: translateY(-12px) rotate(1.5deg) scale(1.04);
+  box-shadow: 0 24px 60px rgba(236, 64, 122, 0.32), 0 0 40px var(--gold-glow);
+  border-color: var(--pink-primary);
+}
+
+.polaroid-card.vip-highlight .polaroid-img-wrapper {
+  aspect-ratio: 4 / 5;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.vip-badge-ribbon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ffd700, #ec407a);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(236, 64, 122, 0.4);
+  z-index: 5;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.polaroid-pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.polaroid-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #fff0f5;
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-card:hover .polaroid-img {
+  transform: scale(1.06);
+}
+
+.badge-featured-star {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  color: var(--gold-dark);
+  border: 1px solid var(--gold-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.polaroid-caption {
+  padding-top: 12px;
+}
+
+.polaroid-title {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.polaroid-note {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.polaroid-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  padding-top: 6px;
+}
+
+/* TikTok Polaroid */
+.tiktok-polaroid {
+  background: linear-gradient(180deg, #ffffff 0%, #fff7fa 100%);
+}
+
+.tiktok-avatar-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(45deg, #ec407a, #ffd700, #f48fb1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiktok-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.tiktok-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.tiktok-card-handle {
+  color: var(--pink-primary);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.btn-tiktok-custom {
+  background: linear-gradient(135deg, #ec407a, #d4af37);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: none;
+  transition: var(--transition-smooth);
+}
+
+.btn-tiktok-custom:hover {
+  background: linear-gradient(135deg, #d4af37, #ec407a);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.35);
+}
+
+/* Upload Slot Polaroid */
+.upload-polaroid-slot {
+  border: 2px dashed rgba(212, 175, 55, 0.45);
+  background: #fffcfd;
+}
+
+.upload-slot-box {
+  min-height: 220px;
+}
+
+.upload-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--pink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-slot-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.btn-gold-subtle {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-dark);
+  font-weight: 700;
+  border-radius: 20px;
+}
+
+/* ==========================================================================
+   SECTION 4: INTERACTIVE WISH (MAKE A WISH / SOPLAR VELA)
+   ========================================================================== */
+.module-kicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+}
+
+.module-title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.module-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* Candle & Cake Animation */
+.interactive-candle-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 120px;
+  justify-content: flex-end;
+}
+
+.candle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: -5px;
+}
+
+.candle-flame {
+  width: 16px;
+  height: 28px;
+  background: radial-gradient(ellipse at bottom, #ffffff 0%, #ffde59 30%, #ff5722 80%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  box-shadow: 0 0 18px #ffb300, 0 0 30px #ff5722;
+  animation: flicker 1s infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) rotate(-1deg); }
+  50% { transform: scale(1.08, 0.95) rotate(2deg); }
+  100% { transform: scale(0.96, 1.05) rotate(-2deg); }
+}
+
+.candle-flame.blown-out {
+  animation: blowOut 0.4s forwards;
+}
+
+@keyframes blowOut {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3, 0.2) skewX(20deg); opacity: 0.6; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.smoke-puff {
+  position: absolute;
+  top: -30px;
+  font-size: 1.8rem;
+  animation: smokeRise 1.8s forwards ease-out;
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0; transform: translateY(10px) scale(0.5); }
+  50% { opacity: 0.8; transform: translateY(-20px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-40px) scale(1.8); }
+}
+
+.candle-wick {
+  width: 2px;
+  height: 8px;
+  background: #555;
+}
+
+.candle-wax-stick {
+  width: 14px;
+  height: 48px;
+  background: linear-gradient(180deg, #ffc0cb 0%, #f48fb1 50%, #ec407a 100%);
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 1px 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.cake-base-plate {
+  font-size: 3.6rem;
+  line-height: 1;
+}
+
+.btn-candle-blow {
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  border: none;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 12px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  transition: var(--transition-bounce);
+}
+
+.btn-candle-blow:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+}
+
+.alert-gold {
+  background: #fff8ea;
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-dark);
+  border-radius: 14px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.presidential-footer {
+  border-top: 1.5px solid rgba(212, 175, 55, 0.25);
+  margin-top: 3rem;
+  background: #ffffff;
+}
+
+.footer-crown {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 8px var(--gold-glow));
+}
+
+.footer-title {
+  font-family: var(--font-crest);
+  letter-spacing: 3px;
+  font-size: 1.25rem;
+  color: var(--gold-dark);
+}
+
+.footer-subtitle {
+  color: var(--text-secondary);
+}
+
+.footer-divider {
+  width: 60px;
+  height: 2.5px;
+  background: var(--gold-primary);
+  margin: 0 auto;
+}
+
+.footer-credits {
+  color: var(--text-primary);
+}
+
+.footer-subcredits {
+  color: var(--text-muted);
+}
+
+.btn-outline-pink {
+  border: 1.5px solid var(--pink-primary);
+  color: var(--pink-primary);
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-pink:hover {
+  background: var(--pink-primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(236, 64, 122, 0.35);
+}
+
+/* ==========================================================================
+   MODAL LIGHTBOX
+   ========================================================================== */
+.lightbox-content {
+  background: #ffffff;
+  border: 1.5px solid var(--border-gold-bright);
+  border-radius: 20px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2), 0 0 40px var(--gold-glow);
+}
+
+.lightbox-img-frame img {
+  max-height: 70vh;
+  object-fit: contain;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+}
+
+.lightbox-caption {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+/* Utilities */
+.text-gold { color: var(--gold-dark) !important; }
+.text-pink { color: var(--pink-primary) !important; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .envelope-container {
+    width: 290px;
+    height: 200px;
+  }
+  .envelope-front {
+    border-width: 100px 145px 100px 145px;
+  }
+  .envelope-flap {
+    border-width: 110px 145px 0 145px;
+  }
+  .wax-seal {
+    top: 100px;
+    width: 66px;
+    height: 66px;
+  }
+  .seal-inner {
+    width: 54px;
+    height: 54px;
+  }
+  .letter-body {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .parchment-letter-card {
+    padding: 1.5rem !important;
+  }
+  .royal-portrait-frame-wrapper {
+    max-width: 340px;
+  }
+  .tiara-emoji {
+    font-size: 2.8rem;
+  }
+}

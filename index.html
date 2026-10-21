@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Feliz Cumpleaños, Presidenta Patricia! 👑✨</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Carta y detalle especial de cumpleaños para nuestra Presidenta Patricia (Pato). De parte de su Vicepresidente.">
+  <meta property="og:title" content="¡Feliz Cumpleaños, Presidenta Pato! 👑💖">
+  <meta property="og:description" content="Detalle oficial de celebración emitido por la Vicepresidencia.">
+  <meta property="og:image" content="FotosPato/presidenta.jpg">
+
+  <!-- Favicon Crown -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+
+  <!-- Google Fonts: Playfair Display, Plus Jakarta Sans, Great Vibes, Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet (Pink, White & Gold Theme) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Particles Canvas (Soft Pink & Golden Sparkles) -->
+  <canvas id="ambientSparklesCanvas"></canvas>
+
+  <!-- Quick Floating Confetti Button -->
+  <button class="floating-confetti-btn" id="quickConfettiBtn" title="¡Lanzar confeti y corazones!">
+    <span>💖✨</span>
+  </button>
+
+  <!-- ==============================================
+       STAGE 1: THE PRESIDENTIAL ENVELOPE (INTRO SCREEN)
+       ============================================== -->
+  <section class="envelope-hero-overlay" id="envelopeSection">
+    <div class="envelope-wrapper">
+      <div class="envelope-instruction">
+        <span class="badge-official">
+          <i class="fa-solid fa-crown me-1 text-gold"></i> Comunicado Presidencial
+        </span>
+        <h2 class="envelope-callout">Para: Nuestra Presidenta Patricia 👑</h2>
+        <p class="envelope-subtext">Remite: Tu Vicepresidente • Toca el sello para abrir</p>
+      </div>
+
+      <!-- 3D Interactive Envelope (Pink, Pearl White & Gold) -->
+      <div class="envelope-container" id="envelopeCard" role="button" tabindex="0" aria-label="Abrir carta de cumpleaños">
+        <div class="envelope-back"></div>
+        <div class="envelope-paper-preview">
+          <div class="paper-glimpse">
+            <span class="glimpse-crown">👑</span>
+            <span class="glimpse-text">¡FELIZ CUMPLEAÑOS!</span>
+          </div>
+        </div>
+        <div class="envelope-flap" id="envelopeFlap"></div>
+        <div class="envelope-front"></div>
+        
+        <!-- Golden Royal Wax Seal -->
+        <div class="wax-seal" id="waxSeal">
+          <div class="seal-inner">
+            <span class="seal-icon">👑</span>
+            <span class="seal-monogram">P</span>
+            <span class="seal-caption">PRESIDENCIA</span>
+          </div>
+          <div class="seal-glow"></div>
+        </div>
+      </div>
+
+      <div class="envelope-footer-hint">
+        <p><i class="fa-solid fa-hand-pointer fa-bounce me-2"></i> Haz clic en el sello para descubrir tu sorpresa</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       STAGE 2: MAIN CELEBRATION EXPERIENCE
+       ============================================== -->
+  <main class="main-celebration-content d-none" id="mainCelebration">
+
+    <!-- Header Section -->
+    <header class="presidential-header text-center py-5">
+      <div class="container position-relative">
+        <div class="royal-crest-wrapper mb-3">
+          <div class="royal-crest">
+            <i class="fa-solid fa-crown text-gold crest-crown"></i>
+            <span class="crest-sparkle-left">✨</span>
+            <span class="crest-sparkle-right">💖</span>
+          </div>
+        </div>
+        <span class="official-pill">EDICIÓN ESPECIAL DE CUMPLEAÑOS</span>
+        <h1 class="celebration-title mt-2">
+          ¡Feliz Cumpleaños, <span class="gradient-text">Presidenta Patricia</span>!
+        </h1>
+        <p class="celebration-subtitle mx-auto">
+          Un detalle preparado con mucho cariño y aprecio de parte de tu Vicepresidente Stiven en tu día más especial.
+        </p>
+
+        <!-- Clean Badges (Pink, White & Gold) -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-3 badges-cluster">
+          <span class="beauty-tag"><i class="fa-solid fa-crown text-gold"></i> Nuestra Presidenta</span>
+          <span class="beauty-tag"><i class="fa-solid fa-heart text-pink"></i> Cumpleañera Favorita</span>
+          <span class="beauty-tag"><i class="fa-solid fa-sparkles text-gold"></i> Luz & Sonrisas</span>
+          <span class="beauty-tag"><i class="fa-solid fa-champagne-glasses text-gold"></i> Día de Celebrar</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: THE ROYAL HERO PORTRAIT (FEATURED IMAGE) -->
+    <section class="hero-portrait-section py-4">
+      <div class="container">
+        <div class="row align-items-center justify-content-center g-4">
+          
+          <!-- Image Column (Spotlight) -->
+          <div class="col-12 col-md-10 col-lg-6 text-center">
+            <div class="royal-portrait-frame-wrapper" id="royalPortraitWrapper">
+              
+              <!-- Floating Tiara on Top of Frame -->
+              <div class="floating-tiara">
+                <span class="tiara-emoji">👑</span>
+                <div class="tiara-halo"></div>
+              </div>
+
+              <!-- Pearl White & Gold Frame -->
+              <!-- Pearl White & Gold Frame -->
+              <div class="royal-frame" id="interactiveFrame" onclick="openLightbox(document.getElementById('mainPresidentaPhoto').src, 'Retrato de la Presidenta Patricia')" style="cursor: pointer;" title="Toca para ver en grande">
+                <div class="frame-glass-shine"></div>
+                
+                <img src="FotosPato/presidenta.jpg" 
+                     alt="Retrato Oficial de la Presidenta Patricia con su corona de cristales" 
+                     class="img-fluid hero-portrait-img" 
+                     id="mainPresidentaPhoto">
+
+                <div class="frame-interactive-overlay">
+                  <div class="portrait-watermark">
+                    <span>LA PRESIDENTA • FOTO OFICIAL</span>
+                  </div>
+                </div>
+
+                <!-- Corner Ornaments -->
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+              </div>
+
+              <!-- Interactive Floating Action under Frame -->
+              <div class="portrait-actions mt-3">
+                <button class="btn btn-luxury-sparkle" id="applaudPresidentaBtn">
+                  <i class="fa-solid fa-heart text-white me-1"></i>
+                  <span>¡Enviar cariño y aplausos a la Presidenta!</span>
+                  <span class="counter-badge" id="applauseCount">0</span>
+                </button>
+                <div class="portrait-caption">
+                  <p class="mb-0">
+                    <i class="fa-solid fa-quote-left text-muted me-1"></i>
+                    La ingeniera, reina de las frías ❄️👑
+                    <i class="fa-solid fa-quote-right text-muted ms-1"></i>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bio / Details Card -->
+          <div class="col-12 col-md-10 col-lg-5">
+            <div class="glass-card presidential-bio-card p-4 p-md-5">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <span class="executive-badge">
+                  <i class="fa-solid fa-certificate me-1 text-gold"></i> Ficha Presidencial
+                </span>
+                <span class="text-muted small"><i class="fa-solid fa-calendar-check me-1 text-pink"></i> Día Inolvidable</span>
+              </div>
+
+              <h2 class="card-lead-title">Nuestra Homenajeada</h2>
+              
+              <ul class="presidential-perks-list list-unstyled my-4">
+                <li>
+                  <div class="perk-icon"><i class="fa-solid fa-crown text-gold"></i></div>
+                  <div class="perk-content">
+                    <strong>Cargo de Honor:</strong>
+                    <span>La Presidenta favorita, con la mejor energía y corazón.</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="perk-icon"><i class="fa-solid fa-wand-magic-sparkles text-pink"></i></div>
+                  <div class="perk-content">
+                    <strong>Su Pasión:</strong>
+                    <span>El arte del maquillaje, crear contenido y transmitir alegría a cada persona que la ve.</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="perk-icon"><i class="fa-brands fa-tiktok text-dark"></i></div>
+                  <div class="perk-content">
+                    <strong>En Redes Sociales:</strong>
+                    <span>
+                      Encuéntrala en su TikTok oficial: 
+                      <a href="https://www.tiktok.com/@pato_bdm" target="_blank" rel="noopener" class="tiktok-link">
+                        <i class="fa-brands fa-tiktok me-1"></i>@pato_bdm
+                      </a>
+                    </span>
+                  </div>
+                </li>
+                <li>
+                  <div class="perk-icon"><i class="fa-solid fa-cake-candles text-gold"></i></div>
+                  <div class="perk-content">
+                    <strong>Objetivo de Hoy:</strong>
+                    <span>Celebrar sus 24 años, sonreír sin parar y dejarse consentir al máximo.</span>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="vice-stamp-box p-3 rounded-3 mt-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="stamp-icon-circle">
+                    <i class="fa-solid fa-handshake-simple"></i>
+                  </div>
+                  <div>
+                    <h4 class="h6 mb-0 text-gold fw-bold">Certificado por el Vicepresidente Stiven</h4>
+                    <p class="mb-0 text-secondary small">"Es un auténtico gusto ser tu Vicepresidente y poder celebrar tu vida hoy."</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE PRESIDENTIAL LETTER FROM THE VICEPRESIDENT -->
+    <section class="presidential-letter-section py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-9">
+            
+            <div class="parchment-letter-card p-4 p-md-5">
+              
+              <!-- Letter Header -->
+              <div class="letter-top-header text-center pb-4 mb-4 border-bottom-gold">
+                <div class="letter-seal-symbol">
+                  <span>🏛️</span>
+                </div>
+                <h2 class="letter-title">DESPACHO DE LA VICEPRESIDENCIA</h2>
+                <span class="letter-subtitle">Carta Oficial de Aprecio & Felicitación</span>
+                <div class="letter-date mt-2">
+                  <span>Asunto: Aniversario de Nacimiento de la Presidenta Patricia (Pato)</span>
+                </div>
+              </div>
+
+              <!-- Letter Body Content -->
+              <div class="letter-body text-center py-2">
+                <p class="letter-salutation mb-3">
+                  ¡Feliz cumpleaños, ingeniería y presidenta Pato! 🎓👑
+                </p>
+
+                <p class="fs-5 mb-4 text-secondary">
+                  Este es el regalo de parte de su <strong>Vicepresidente</strong> que está limpio y que la quiere mucho.
+                </p>
+
+                <div class="letter-quote-callout my-4 p-3 rounded-3">
+                  <span class="fs-4 fw-bold gradient-text">
+                    ❄️ ¡Un año más metiendo fría!
+                  </span>
+                </div>
+
+                <p class="letter-closing mt-4 mb-2">
+                  <span class="signature-handwritten">Att: El Vicepresidente Stiven 🏛️</span>
+                </p>
+
+                <div class="letter-wax-stamp-end text-end mt-4">
+                  <div class="mini-seal">
+                    <i class="fa-solid fa-stamp text-gold me-1"></i>
+                    <span>ENTREGADO CON TOTAL APRECIO • VICEPRESIDENTE STIVEN</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE MEMORY & PHOTO GALLERY ("ÁLBUM Y MOMENTOS REALES") -->
+    <section class="gallery-section py-5" id="albumSection">
+      <div class="container">
+        
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4 pb-2 border-bottom-soft">
+          <div>
+            <span class="official-pill">RECUERDOS & FOTOS</span>
+            <h2 class="section-heading mt-1">Álbum y Momentos Reales</h2>
+            <p class="section-subtext mb-0">
+              Las mejores fotos de nuestra Presidenta: sonrisas, momentos especiales y su corona. ¡Toca cualquier foto para verla en grande!
+            </p>
+          </div>
+          
+          <!-- Add Photo Button -->
+          <div class="mt-3 mt-md-0">
+            <label for="customPhotoInput" class="btn btn-gold-outline">
+              <i class="fa-solid fa-camera-retro me-2"></i> Añadir Foto al Álbum
+            </label>
+            <input type="file" id="customPhotoInput" accept="image/*" class="d-none" multiple>
+          </div>
+        </div>
+
+        <!-- VIP Highlight Badge Banner -->
+        <div class="mb-4 d-flex align-items-center gap-2">
+          <span class="badge rounded-pill px-3 py-2 text-white" style="background: linear-gradient(135deg, #ffd700, #ec407a); font-weight: 700; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(236, 64, 122, 0.3);">
+            <i class="fa-solid fa-star me-1"></i> Selección Destacada VIP • Las Mejores Fotos de la Presidenta
+          </span>
+          <span class="text-muted small d-none d-sm-inline">
+            <i class="fa-solid fa-sparkles text-gold me-1"></i> Fotos destacadas con marco dorado y formato exclusivo .webp
+          </span>
+        </div>
+
+        <!-- Gallery Grid (Polaroid Style with Her Best Photos) -->
+        <div class="row g-4" id="photoGalleryContainer">
+          
+          <!-- VIP PHOTO 1: El Guiño de la Presidenta (.webp format requested) -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card vip-highlight" onclick="openLightbox('FotosPato/fotopato1.webp', 'El Guiño de la Presidenta (Formato .webp): Belleza auténtica, guiño y beso')">
+              <span class="vip-badge-ribbon"><i class="fa-solid fa-star me-1"></i> Favorita .webp</span>
+              <div class="polaroid-pin">💋</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/fotopato1.webp" alt="Patricia guiño y beso en formato webp" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">El Guiño de la Presidenta</h4>
+                <p class="polaroid-note">"Guiño, beso y esa vibra única que ilumina todo a su alrededor."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Exclusiva .webp</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-heart text-pink"></i> Top #1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIP PHOTO 2: Tentazione Postres with wink and striped top -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card vip-highlight" onclick="openLightbox('FotosPato/width_601.png', 'Tentazione & Sonrisas: Patricia con su postre favorito, guiño y sonrisa')">
+              <span class="vip-badge-ribbon"><i class="fa-solid fa-ice-cream me-1"></i> Momento Dulce</span>
+              <div class="polaroid-pin">🍓</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/width_601.png" alt="Patricia con postre Tentazione sonriendo y guiñando" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">Tentazione & Sonrisas</h4>
+                <p class="polaroid-note">"Disfrutando de la vida con esa chispa y picardía inconfundible."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Tentazione Postres</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-star text-gold"></i> Pura Chispa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIP PHOTO 3: SAMY Compact Powder Eye Makeup -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card vip-highlight" onclick="openLightbox('FotosPato/width_600.jpg', 'Mirada & Arte SAMY: Look profesional de maquillaje y elegancia')">
+              <span class="vip-badge-ribbon"><i class="fa-solid fa-wand-magic-sparkles me-1"></i> Beauty Icon</span>
+              <div class="polaroid-pin">💄</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/width_600.jpg" alt="Patricia con polvo SAMY mostrando maquillaje impecable" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">Mirada & Glam SAMY</h4>
+                <p class="polaroid-note">"Piel impecable, mirada profunda y pasión absoluta por el maquillaje."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Makeup Art</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-award text-gold"></i> Maquilladora</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIP PHOTO 4: Blush & Brush with Red Lips and Eyeliner -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card vip-highlight" onclick="openLightbox('FotosPato/pato_blush_brocha.jpg', 'El Toque de Rubor: Brocha, labios rojos y delineado perfecto')">
+              <span class="vip-badge-ribbon"><i class="fa-solid fa-paint-brush me-1"></i> Arte en la Piel</span>
+              <div class="polaroid-pin">✨</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/pato_blush_brocha.jpg" alt="Patricia aplicándose rubor con brocha y delineado perfecto" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">El Toque de Rubor</h4>
+                <p class="polaroid-note">"Delineado perfecto, mejillas radiantes y actitud triunfal."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Glamour Total</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-crown text-gold"></i> 10/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIP PHOTO 5: Sweet Kiss with Tentazione Cup -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card vip-highlight" onclick="openLightbox('FotosPato/fotopato.jpg', 'Beso & Tentazione: Momento dulce con su postre favorito')">
+              <span class="vip-badge-ribbon"><i class="fa-solid fa-heart me-1"></i> Beso Dulce</span>
+              <div class="polaroid-pin">🍰</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/fotopato.jpg" alt="Patricia mandando beso con postre Tentazione" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">Beso & Tentazione</h4>
+                <p class="polaroid-note">"Un beso dulce para celebrar la vida, siempre alegre y auténtica."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Momentos Reales</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-heart text-pink"></i> Dulzura</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHOTO 6: Main Portrait with Crown -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card featured-polaroid" onclick="openLightbox('FotosPato/presidenta.jpg', 'La Foto Oficial: Presidenta Patricia con su corona de cristales y look de celebración')">
+              <div class="polaroid-pin">👑</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/presidenta.jpg" alt="Foto principal de Patricia con corona" class="polaroid-img">
+                <span class="badge-featured-star">👑 Retrato de Estado</span>
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">La Reina de la Celebración</h4>
+                <p class="polaroid-note">"Esa mirada y esa corona: lista para gobernar un nuevo año de vida."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Retrato Oficial</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-crown text-gold"></i> La Presidenta</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHOTO 7: Champagne Toast with Crown -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card" onclick="openLightbox('FotosPato/pato_corona_brindis.jpg', '¡Salud, Presidenta! Brindando con copa y corona en su cumpleaños')">
+              <div class="polaroid-pin">🥂</div>
+              <div class="polaroid-img-wrapper">
+                <img src="FotosPato/pato_corona_brindis.jpg" alt="Patricia brindando con copa y corona" class="polaroid-img">
+              </div>
+              <div class="polaroid-caption">
+                <h4 class="polaroid-title">El Brindis Presidencial</h4>
+                <p class="polaroid-note">"Copa en mano, corona puesta y los mejores deseos para este año."</p>
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Cumpleaños 24</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-crown text-gold"></i> Brindis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- Photo 8: TikTok Spotlight Card -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper">
+            <div class="polaroid-card tiktok-polaroid">
+              <div class="polaroid-pin">📱</div>
+              <div class="tiktok-card-content p-4 text-center">
+                <div class="tiktok-avatar-ring mb-3 mx-auto">
+                  <img src="FotosPato/presidenta.jpg" alt="Patricia TikTok Avatar" class="tiktok-avatar-img">
+                </div>
+                <h4 class="tiktok-card-name mb-1">Patricia ✨</h4>
+                <p class="tiktok-card-handle mb-3">@pato_bdm</p>
+                <p class="tiktok-card-bio small text-muted">
+                  Su cuenta oficial de TikTok donde comparte sus videos, maquillaje y aventuras.
+                </p>
+                <a href="https://www.tiktok.com/@pato_bdm" target="_blank" rel="noopener" class="btn btn-tiktok-custom w-100">
+                  <i class="fa-brands fa-tiktok me-2"></i> Ver su TikTok Oficial
+                </a>
+              </div>
+              <div class="polaroid-caption pt-2">
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">TikTok Oficial</span>
+                  <span class="polaroid-likes"><i class="fa-solid fa-circle-check text-pink"></i> Activa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo 9: Upload More Placeholder Card (Interactive Dropzone) -->
+          <div class="col-12 col-md-6 col-lg-4 gallery-item-wrapper" id="uploadSlotCard">
+            <div class="polaroid-card upload-polaroid-slot" onclick="document.getElementById('customPhotoInput').click()">
+              <div class="polaroid-pin">➕</div>
+              <div class="upload-slot-box d-flex flex-column align-items-center justify-content-center p-4">
+                <div class="upload-icon-circle mb-3">
+                  <i class="fa-solid fa-cloud-arrow-up fa-2x text-gold"></i>
+                </div>
+                <h4 class="upload-slot-title">¿Tienes más fotos?</h4>
+                <p class="upload-slot-desc small text-muted text-center">
+                  Haz clic aquí para seleccionar y añadir más recuerdos de la Presidenta a este álbum.
+                </p>
+                <span class="btn btn-sm btn-gold-subtle">
+                  <i class="fa-solid fa-plus me-1"></i> Seleccionar fotos
+                </span>
+              </div>
+              <div class="polaroid-caption pt-2">
+                <div class="polaroid-footer">
+                  <span class="polaroid-date">Galería Abierta</span>
+                  <span class="polaroid-likes">Personalizable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE WISH (MAKE A WISH / SOPLAR LA VELA) -->
+    <section class="interactive-lab-section py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-7">
+            <div class="glass-card interactive-module-card p-4 p-md-5 text-center">
+              <span class="module-kicker"><i class="fa-solid fa-cake-candles text-gold me-1"></i> MOMENTO ESPECIAL</span>
+              <h3 class="module-title mt-2">Pide un Deseo, Presidenta</h3>
+              <p class="module-desc">
+                Cierra los ojos un segundo, piensa en ese sueño o meta que tienes para este nuevo año y sopla la vela haciendo clic en el botón.
+              </p>
+
+              <!-- Interactive Animated Cake & Candle -->
+              <div class="interactive-candle-box my-4">
+                <div class="candle-container" id="candleStage">
+                  <div class="candle-flame" id="candleFlame"></div>
+                  <div class="candle-wick"></div>
+                  <div class="candle-wax-stick"></div>
+                  <div class="smoke-puff d-none" id="smokePuff">💨</div>
+                </div>
+                <div class="cake-base-plate">🎂</div>
+              </div>
+
+              <!-- Button to Blow Candle -->
+              <button class="btn btn-candle-blow" id="blowCandleBtn">
+                <i class="fa-solid fa-wind me-2"></i> ¡Soplar la Vela y Pedir Deseo!
+              </button>
+
+              <div class="wish-result-message mt-3 d-none" id="wishSuccessMsg">
+                <div class="alert alert-gold py-2 px-3 mb-0">
+                  <i class="fa-solid fa-sparkles text-gold me-2"></i>
+                  <strong>¡Deseo pedido al universo!</strong> Que este nuevo año te regale todo lo bonito que te mereces.
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="presidential-footer text-center py-5">
+      <div class="container">
+        <div class="footer-crest mb-3">
+          <span class="footer-crown">👑</span>
+        </div>
+        <h4 class="footer-title">PRESIDENCIA DE PATRICIA</h4>
+        <p class="footer-subtitle">
+          "Celebrando la vida, las sonrisas y los momentos bonitos."
+        </p>
+        
+        <div class="footer-divider my-4"></div>
+
+        <p class="footer-credits mb-1">
+          Hecho con mucho cariño y dedicación por tu <strong>Vicepresidente</strong>.
+        </p>
+        <p class="footer-subcredits small">
+          © <span id="currentYear"></span> • Feliz Cumpleaños Patricia (Pato)
+        </p>
+
+        <!-- Back to Top / Reopen Letter Button -->
+        <div class="mt-4">
+          <button class="btn btn-sm btn-outline-pink rounded-pill px-4" id="replayEnvelopeBtn">
+            <i class="fa-solid fa-envelope me-1"></i> Ver sobre nuevamente
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODAL LIGHTBOX FOR PHOTOS -->
+  <div class="modal fade" id="photoLightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content lightbox-content">
+        <div class="modal-header border-0 pb-0">
+          <span class="badge-official mb-0">
+            <i class="fa-solid fa-crown text-gold me-1"></i> Galería Presidencial
+          </span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center p-3 p-md-4">
+          <div class="lightbox-img-frame">
+            <img src="" alt="Foto en detalle" id="lightboxModalImg" class="img-fluid rounded-3">
+          </div>
+          <p class="lightbox-caption mt-3 mb-0" id="lightboxModalCaption"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
